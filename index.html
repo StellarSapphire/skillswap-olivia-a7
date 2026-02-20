@@ -1,8 +1,8 @@
 <!--  
 * Author: Olivia Haag
-* Date: 2/12/26
+* Date: 2/19/26
 * Class: Rize - Software Development
-* Purpose:Assignment: Assign. 5 - SkillSwap Index Page
+* Purpose:Assignment: Assign. 7 - SkillSwap Index Page
  -->
 
 <!DOCTYPE html>
@@ -57,27 +57,46 @@
                 <p>Tutor: Chelsie Brown</p>
             </div> -->
         </div>
-        <div id="cost-calculator">
-            <h4>Calculate Total Cost</h4>
-            <label for="hours-input">Hours:</label>
-            <input type="number" id="hours-input" placeholder="Enter hours" />
-            <br />
-            <label for="rate-input">Hourly Rate:</label>
-            <input type="number" id="rate-input" placeholder="Enter hourly rate" />
-            
-            <button id="calculate-btn">Calculate</button>
-            <p id="total-cost" class="result-box"></p>
+
+        <div class="add-skill-section">
+            <h4>Add a New Skill</h4>
+            <form id="add-skill-form">
+                <input type="text" id="skill-title" placeholder="Skill Title" required />
+                <select id="skill-category" required>
+                    <option value="">Select Category</option>
+                    <option value="Math">Math</option>
+                    <option value="Science">Science</option>
+                </select>
+                <input type="number" id="skill-price" placeholder="Price per hour" required />
+                <input type="text" id="skill-provider" placeholder="Your Name" required />
+                <textarea id="skill-description" placeholder="Skill Description" required></textarea>
+                <button type="submit">Add Skill</button>
+            </form>
         </div>
 
-        <div id="user-needs">
-            <h4>Find Skills That Match Your Needs</h4>
-            <label for="user-category">Category:</label>
-            <input type="text" id="user-category" placeholder="Enter category (e.g. Math)" />
-            <br />
-            <label for="user-max-price">Max Price:</label>
-            <input type="number" id="user-max-price" placeholder="Enter max price" />
+        <div id="tools-container">
+            <div id="cost-calculator">
+                <h4>Calculate Total Cost</h4>
+                <label for="hours-input">Hours:</label>
+                <input type="number" id="hours-input" placeholder="Enter hours" />
+                <br />
+                <label for="rate-input">Hourly Rate:</label>
+                <input type="number" id="rate-input" placeholder="Enter hourly rate" />
+                
+                <button id="calculate-btn">Calculate</button>
+                <p id="total-cost" class="result-box"></p>
+            </div>
 
-            <button id="match-btn">Find Matches</button>
+            <div id="user-needs">
+                <h4>Find Skills That Match Your Needs</h4>
+                <label for="user-category">Category:</label>
+                <input type="text" id="user-category" placeholder="Enter category (e.g. Math)" />
+                <br />
+                <label for="user-max-price">Max Price:</label>
+                <input type="number" id="user-max-price" placeholder="Enter max price" />
+
+                <button id="match-btn">Find Matches</button>
+            </div>
         </div>
         <div class="card-container" id="matched-skills-container">
             <!-- Matched skills will be displayed here -->
@@ -88,6 +107,7 @@
         <p>&copy; 2026 Skill Swap. All rights reserved.<br />
         <a href="mailto:o162509haag@mail.swu.edu">o162509haag@mail.swu.edu</a></p>
     </footer>
+    <script src="api-service.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

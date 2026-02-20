@@ -13,7 +13,10 @@ function filterSkillsByCategory(skills, category) {
     return skills.filter(skill => skill.category === category);
 }
 
-const allSkills = [
+let allSkills = []; //will be populated with data from the API
+
+
+/*const allSkills = [
     {
         title: 'Biology',
         category: 'Science',
@@ -35,7 +38,7 @@ const allSkills = [
         provider: 'Chelsie Brown',
         description: 'Learn about mechanics, thermodynamics, electromagnetism, and much more!'
     },
-];
+];*/
 
 function displaySkills(skills) {
     const container = document.getElementById('skills-container');
@@ -71,6 +74,21 @@ function displaySkills(skills) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', async() => {
+    await loadSkills();
+});
+
+//Async function to load skills from API
+async function loadSkills() {
+    try {
+        allSkills = await window.apiService.fetchSkills();
+        displaySkills(allSkills);
+    } catch (error) {
+        console.error('Failed to load skills:', error);
+        alert('Failed to load skills. Please try again later.');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll(".skill-container");
 
@@ -99,8 +117,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    displaySkills(allSkills);
+    /*displaySkills(allSkills);*/
+
+    if (filterButtons.length > 0) {
+    filterButtons[0].classList.add('active');
+}
 });
+
+//Add this to handle form submission
+const addSkillForm = document.getElementById('add-skill-form');
+
+addSkillForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const skillData = {
+        title: document.getElementById('skill-title').value,
+        category: document.getElementById('skill-category').value,
+        price: parseFloat(document.getElementById('skill-price').value),
+        provider: document.getElementById('skill-provider').value,
+        description: document.getElementById('skill-description').value
+    };
+
+    try {
+        await window.apiService.createSkill(skillData);
+        alert('Skill added successfully!');
+
+        //clear form
+        addSkillForm.reset();
+
+        //reload skills from API
+        await loadSkills();
+
+        //reset filter to show all skills (AI was used to assist with this functionality)
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        if (filterButtons.length > 0) {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            filterButtons[0].classList.add('active');
+        }
+
+    } catch (error) {
+        console.error('Failed to add skill:', error);
+        alert('Failed to add skill. Please try again later.');
+    }
+});
+
 
 function calculateTotalCosts(hourlyRate, hours) {
     return hourlyRate * hours;
