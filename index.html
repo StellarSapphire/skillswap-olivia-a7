@@ -1,0 +1,93 @@
+<!--  
+* Author: Olivia Haag
+* Date: 2/12/26
+* Class: Rize - Software Development
+* Purpose:Assignment: Assign. 5 - SkillSwap Index Page
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">SkillSwap</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <h3>Share Your Skills, Learn From Others</h3>
+            <p>Connect with talented individuals and expand your knowledge through skill exchange</p>
+        </div>
+        <div class="hero" id="homehero"></div>
+        <h4>Available Skills</h4>
+        <div id="filter-buttons">
+            <button class="filter-btn" data-category="All">All</button>
+            <button class="filter-btn" data-category="Math">Math</button>
+            <button class="filter-btn" data-category="Science">Science</button>
+        </div>
+        <div class="card-container" id="skills-container">
+            <!-- <div class="card">
+                <h2>Biology</h2>
+                <p>Learn about cellular processes, genetics, ecosystems, and much more!</p>
+                <p>Price: $25/hour</p>
+                <p>Tutor: Shelby Cannon</p>
+            </div>
+            <div class="card">
+                <h2>Algebra</h2>
+                <p>Learn about algebraic expressions, equations, and functions.</p>
+                <p>Price: $20/hour</p>
+                <p>Tutor: Ryan Digby</p>
+            </div>
+            <div class="card">
+                <h2>Physics</h2>
+                <p>Learn about mechanics, thermodynamics, electromagnetism, and much more!</p>
+                <p>Price: $30/hour</p>
+                <p>Tutor: Chelsie Brown</p>
+            </div> -->
+        </div>
+        <div id="cost-calculator">
+            <h4>Calculate Total Cost</h4>
+            <label for="hours-input">Hours:</label>
+            <input type="number" id="hours-input" placeholder="Enter hours" />
+            <br />
+            <label for="rate-input">Hourly Rate:</label>
+            <input type="number" id="rate-input" placeholder="Enter hourly rate" />
+            
+            <button id="calculate-btn">Calculate</button>
+            <p id="total-cost" class="result-box"></p>
+        </div>
+
+        <div id="user-needs">
+            <h4>Find Skills That Match Your Needs</h4>
+            <label for="user-category">Category:</label>
+            <input type="text" id="user-category" placeholder="Enter category (e.g. Math)" />
+            <br />
+            <label for="user-max-price">Max Price:</label>
+            <input type="number" id="user-max-price" placeholder="Enter max price" />
+
+            <button id="match-btn">Find Matches</button>
+        </div>
+        <div class="card-container" id="matched-skills-container">
+            <!-- Matched skills will be displayed here -->
+        </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2026 Skill Swap. All rights reserved.<br />
+        <a href="mailto:o162509haag@mail.swu.edu">o162509haag@mail.swu.edu</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
